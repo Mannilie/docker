@@ -60,7 +60,7 @@ RUN [ `echo $version-$module | grep -v '^\(2019.3.[6-9]f\|2019.3.1[0-9]f\|2019.4
 RUN [ `echo $version-$module | grep -v '^\(2020.1\|2020.2.0f\|2020.2.1f\).*-webgl'` ] && exit 0 || : \
   && echo 'export GZIP=-f' >> /usr/bin/unity-editor
 
-RUN echo 'xvfb-run -ae /dev/stdout "$UNITY_PATH/Editor/Unity" -batchmode "$@"' >> /usr/bin/unity-editor
+RUN echo 'xvfb-run -ae /dev/stdout "$UNITY_PATH/Editor/Unity" "$@"' >> /usr/bin/unity-editor
 
 
 ###########################
@@ -117,7 +117,7 @@ RUN [ `echo $version-$module | grep -v '^\(2018.3\|2018.4\).*-android'` ] && exi
     echo "export JAVA_HOME=${JAVA_HOME}"; \
     echo "export PATH=${PATH}"; \
     echo ''; \
-    echo 'xvfb-run -ae /dev/stdout "$UNITY_PATH/Editor/Unity" -batchmode "$@"'; \
+    echo 'xvfb-run -ae /dev/stdout "$UNITY_PATH/Editor/Unity" "$@"'; \
   } > /usr/bin/unity-editor \
   && chmod +x /usr/bin/unity-editor
 
@@ -143,7 +143,7 @@ RUN [ `echo $version-$module | grep -v '^20(?!18).*-android'` ] && exit 0 || : \
     echo "export JAVA_HOME=${JAVA_HOME}"; \
     echo "export PATH=${PATH}"; \
     echo ''; \
-    echo 'xvfb-run -ae /dev/stdout "$UNITY_PATH/Editor/Unity" -batchmode "$@"'; \
+    echo 'xvfb-run -ae /dev/stdout "$UNITY_PATH/Editor/Unity" "$@"'; \
   } > /usr/bin/unity-editor \
   && chmod +x /usr/bin/unity-editor \
   && { \
